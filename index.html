@@ -3,8 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Coming Soon" />
+    <meta name="description" content="MrDemonWolf, Inc. — Coming Soon" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#221f22" media="(prefers-color-scheme: dark)" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221f22'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='ui-monospace,Menlo,monospace' font-size='32' font-weight='600' fill='%23ffd866'%3EMW%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <title>Coming Soon</title>
+    <script>
+      // Anti-flash theme apply — runs before React hydrates.
+      (function () {
+        try {
+          var stored = localStorage.getItem("mdw-theme");
+          var isDark =
+            stored === "dark" ||
+            (stored == null &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (isDark) document.documentElement.classList.add("dark");
+        } catch (e) {
+          /* storage blocked — fall through */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

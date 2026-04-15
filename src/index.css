@@ -1,49 +1,83 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Monokai Pro — Filter Octagon
+ * Light mode is the derived Monokai Pro Light Filter Octagon palette.
+ */
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --radius: 0.625rem;
+  --mp-bg: #fafafa;
+  --mp-bg-2: #f0f0f0;
+  --mp-fg: #29242b;
+  --mp-dim: #7f7a80;
+  --mp-red: #e14775;
+  --mp-orange: #e8751a;
+  --mp-yellow: #cc7a0a;
+  --mp-green: #269d69;
+  --mp-cyan: #1c8ca8;
+  --mp-magenta: #7058be;
+  --mp-sel: #e6e6e6;
+
+  --background: var(--mp-bg);
+  --foreground: var(--mp-fg);
+  --card: var(--mp-bg);
+  --card-foreground: var(--mp-fg);
+  --popover: var(--mp-bg);
+  --popover-foreground: var(--mp-fg);
+  --primary: var(--mp-yellow);
+  --primary-foreground: var(--mp-bg);
+  --secondary: var(--mp-bg-2);
+  --secondary-foreground: var(--mp-fg);
+  --muted: var(--mp-bg-2);
+  --muted-foreground: var(--mp-dim);
+  --accent: var(--mp-cyan);
+  --accent-foreground: var(--mp-bg);
+  --destructive: var(--mp-red);
+  --border: color-mix(in srgb, var(--mp-fg) 12%, transparent);
+  --input: color-mix(in srgb, var(--mp-fg) 14%, transparent);
+  --ring: var(--mp-magenta);
+  --radius: 0.875rem;
+
+  /* macOS traffic-light colors — window chrome, not palette */
+  --tl-red: #ff5f57;
+  --tl-yellow: #febc2e;
+  --tl-green: #28c840;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --mp-bg: #221f22;
+  --mp-bg-2: #2d2a2e;
+  --mp-fg: #fcfcfa;
+  --mp-dim: #939293;
+  --mp-red: #ff6188;
+  --mp-orange: #fc9867;
+  --mp-yellow: #ffd866;
+  --mp-green: #a9dc76;
+  --mp-cyan: #78dce8;
+  --mp-magenta: #ab9df2;
+  --mp-sel: #403e41;
+
+  --background: var(--mp-bg);
+  --foreground: var(--mp-fg);
+  --card: var(--mp-bg);
+  --card-foreground: var(--mp-fg);
+  --popover: var(--mp-bg);
+  --popover-foreground: var(--mp-fg);
+  --primary: var(--mp-yellow);
+  --primary-foreground: var(--mp-bg);
+  --secondary: var(--mp-bg-2);
+  --secondary-foreground: var(--mp-fg);
+  --muted: var(--mp-bg-2);
+  --muted-foreground: var(--mp-dim);
+  --accent: var(--mp-cyan);
+  --accent-foreground: var(--mp-bg);
+  --destructive: var(--mp-red);
+  --border: color-mix(in srgb, var(--mp-fg) 10%, transparent);
+  --input: color-mix(in srgb, var(--mp-fg) 14%, transparent);
+  --ring: var(--mp-magenta);
 }
 
 @theme inline {
@@ -65,17 +99,110 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-mp-bg: var(--mp-bg);
+  --color-mp-bg-2: var(--mp-bg-2);
+  --color-mp-fg: var(--mp-fg);
+  --color-mp-dim: var(--mp-dim);
+  --color-mp-red: var(--mp-red);
+  --color-mp-orange: var(--mp-orange);
+  --color-mp-yellow: var(--mp-yellow);
+  --color-mp-green: var(--mp-green);
+  --color-mp-cyan: var(--mp-cyan);
+  --color-mp-magenta: var(--mp-magenta);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui,
+    sans-serif;
 }
 
 @layer base {
   * {
-    @apply border-[color:var(--border)];
+    border-color: var(--border);
   }
+  html,
   body {
-    @apply bg-background text-foreground;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
+  ::selection {
+    background: var(--mp-sel);
+    color: var(--mp-fg);
+  }
+}
+
+/* macOS 26 Liquid Glass terminal window */
+.terminal-glass {
+  background: color-mix(in srgb, var(--mp-bg) 82%, transparent);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  box-shadow:
+    0 1px 0 0 color-mix(in srgb, white 40%, transparent) inset,
+    0 0 0 1px color-mix(in srgb, var(--mp-fg) 8%, transparent),
+    0 30px 80px -20px rgba(0, 0, 0, 0.45),
+    0 10px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.dark .terminal-glass {
+  background: color-mix(in srgb, var(--mp-bg) 78%, transparent);
+  box-shadow:
+    0 1px 0 0 color-mix(in srgb, white 8%, transparent) inset,
+    0 0 0 1px color-mix(in srgb, white 6%, transparent),
+    0 30px 80px -20px rgba(0, 0, 0, 0.7),
+    0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Hostname hero glow — dark mode only for subtlety */
+.dark .hostname-hero {
+  filter: drop-shadow(
+    0 0 18px color-mix(in srgb, var(--mp-yellow) 32%, transparent)
+  );
+}
+
+/* Blinking block cursor */
+.cursor-block {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.9em;
+  vertical-align: -0.08em;
+  margin-left: 0.08em;
+  background: var(--mp-yellow);
+  animation: cursor-blink 1s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-block {
+    animation: none;
+  }
+}
+
+/* Subtle ambient backdrop — soft radial glow behind the terminal */
+.page-backdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 50% 40%,
+      color-mix(in srgb, var(--mp-magenta) 10%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 40% at 80% 80%,
+      color-mix(in srgb, var(--mp-cyan) 8%, transparent),
+      transparent 70%
+    );
 }
